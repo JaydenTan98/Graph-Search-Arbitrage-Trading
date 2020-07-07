@@ -3,10 +3,20 @@ import java.util.*;
 
 public class TestData {
     List<RateData> rates;
+    List<String> currencies;
 
     public TestData() {
         rates = new ArrayList<>();
+        currencies = new ArrayList<>();
 
+        // hardcoded currencies
+        currencies.add("USD");
+        currencies.add("EUR");
+        currencies.add("GBP");
+        currencies.add("CHF");
+        currencies.add("CAD");
+
+        // hardcoded test cases
         rates.add(new RateData("USD", "EUR", -1*Math.log(0.741)));
         rates.add(new RateData("USD", "GBP", -1*Math.log(0.657)));
         rates.add(new RateData("USD", "CHF", -1*Math.log(1.061)));
@@ -35,6 +45,10 @@ public class TestData {
 
     public List<RateData> getRates() {
         return this.rates;
+    }
+
+    public List<String> getCurrencies() {
+        return this.currencies;
     }
 
     public class RateData {

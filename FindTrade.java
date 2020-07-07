@@ -10,7 +10,9 @@ public class FindTrade {
         // call data provider to get the rates of all trading pairs
         TestData data = new TestData();
         List<RateData> rates = data.getRates();
+        List<String> currencies = data.getCurrencies();
         List<Edge> edgeList = new ArrayList<>();
+        List<Node> nodeList = new ArrayList<>();
 
         // build the edges with the price 
         for(RateData rate : rates) {
@@ -20,14 +22,17 @@ public class FindTrade {
 
             edgeList.add(new Edge(startNode, endNode, tradeRate));
         }
+        
+        for(String currency : currencies) {
+            nodeList.add(new Node(currency));
+        }
 
-        for(Edge edge : edgeList) {
-            System.out.print(edge.getWeight());
+        for(Node node : nodeList) {
+            System.out.print(node.getCurrencyName());
         }
 
         // call bellmand ford algorithm (which contains cycle detection algorithm)
         
-
         // return the path of the trade with the calculated profit
     }
 }
